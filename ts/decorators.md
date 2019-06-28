@@ -12,7 +12,7 @@ Before introducing decorators I would like to say few words about AOP (Aspect-or
 
 ##### Function without AOP ( Decorator )
 
-```javascript=
+```typescript
 function add(x, y) {
     log(‘foo was called!’);
     If(!validate(arguments)) {
@@ -26,7 +26,7 @@ function add(x, y) {
 ```
 
 ##### Function with AOP
-```javascript=
+```typescript
 @log
 @validate
 @authorize
@@ -47,7 +47,7 @@ Decorators can be attached to:
 #### Method Decorator
 
 ##### Simple example
-```
+```typescript
 function log(target, key, descriptor) {
 	console.log(`${key} was called!`);
 }
@@ -80,7 +80,7 @@ or the prototype of the class for an instance member.
 
 The below is a classic example to get metrics of a function.
 
-```javascript=
+```typescript
 function log(target, key, descriptor) {
     const originalMethod = descriptor.value;
     descriptor.value = function() {
@@ -107,7 +107,7 @@ p2.foo('hello', 'world');
 ### Decorator Composition ( multiple decorators and order )
 
  - Multiple decorators can be applied to a declaration, as in the following examples:
-```javascript=
+```typescript
 @f
 @g
 function log(){
@@ -122,7 +122,7 @@ function log(){
 - The expressions for each decorator are evaluated top-to-bottom.
 - The results are then called as functions from bottom-to-top.
 
-```javascript=
+```typescript
 function f() {
     console.log("f(): evaluated");
     return function (target, propertyKey: string, descriptor: PropertyDescriptor) {
@@ -173,7 +173,7 @@ There is a well defined order to how decorators applied to various declarations 
 :sparkle: If the class decorator returns a value, it will replace the class declaration with the provided constructor function.
 
 Example 
-```javascript=
+```typescript
 @sealed
 class Greeter {
     greeting: string;

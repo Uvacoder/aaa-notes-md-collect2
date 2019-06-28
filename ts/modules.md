@@ -12,7 +12,7 @@ Conversely, to consume a variable, function, class, interface, etc. exported fro
 
 #### Direct Export
 `ZipCodeValidator.ts`
-```
+```typescript
 export const numberRegexp = /^[0-9]+$/;
 
 export class ZipCodeValidator implements StringValidator {
@@ -23,7 +23,7 @@ export class ZipCodeValidator implements StringValidator {
 ```
 
 #### Renamed Export
-```
+```typescript
 class ZipCodeValidator implements StringValidator {
     isAcceptable(s: string) {
         return s.length === 5 && numberRegexp.test(s);
@@ -35,7 +35,7 @@ export { ZipCodeValidator as mainValidator };
 
 #### Re-export
 `ParseIntBasedZipCodeValidator.ts`
-```
+```typescript
 export class ParseIntBasedZipCodeValidator {
     isAcceptable(s: string) {
         return s.length === 5 && parseInt(s).toString() === s;
@@ -48,7 +48,7 @@ export {ZipCodeValidator as RegExpBasedZipCodeValidator} from "./ZipCodeValidato
 
 Optionally A Module can wrap one or more modules and combine them using 
 `export * from "module`
-```
+```typescript
 export * from "./StringValidator"; // exports interface 'StringValidator'
 export * from "./LettersOnlyValidator"; // exports class 'LettersOnlyValidator'
 export * from "./ZipCodeValidator";  // exports class 'ZipCodeValidator'
@@ -58,16 +58,16 @@ export * from "./ZipCodeValidator";  // exports class 'ZipCodeValidator'
 ## Import Forms
 
 Simple import
-```
+```typescript
 import { ZipCodeValidator } from "./ZipCodeValidator";
 let myValidator = new ZipCodeValidator();
 ```
 
 #### Renamed Import
-```javascript=
+```typescript
 import { ZipCodeValidator as ZCV } from "./ZipCodeValidator";
 let myValidator = new ZCV();
-```javascript=
+```
 #### Import complete module
 ```
 import * as validator from "./ZipCodeValidator";
@@ -77,7 +77,7 @@ let myValidator = new validator.ZipCodeValidator();
 #### Import for Side-effects
 Though not recommended practice, some modules set up some global state that can be used by other modules. These modules may not have any exports, or the consumer is not interested in any of their exports. To import these modules, 
 
-```javascript=
+```typescript
 import "./my-module.js";
 ```
 
@@ -90,33 +90,33 @@ import "./my-module.js";
 
 Default export 
 `JQuery.d.ts`
-```javascript=
+```typescript
 export default class JQuery { //adding default keyword
 
 };
 ```
 
 Default Import
-```javascript=
+```typescript
 import Jquery from Jquery; // There won't be any curly braces like normal Import, See below for reference
 //import { Jquery } from Jquery;
 Jquery('#box').css('height':'50px')
 ```
 
 Default Export of a function event without name will work
-```javascript=
+```typescript
 export default function (s: string) {
     return s.length === 5 && numberRegexp.test(s);
 }
 ```
 
 Default Export can be also just values
-```javascript=
+```typescript
 export default "123";
 ```
 
 Import
-```javascript=
+```typescript
 import num from "./OneTwoThree";
 console.log(num); // "123"
 ```
@@ -124,14 +124,14 @@ console.log(num); // "123"
 #### Equal (=) Export form and require Import form
 `ZipValidator.ts`
 Export
-```
+```typescript
 class ZipCodeValidator {
 }
 export = ZipCodeValidator;
 ```
 
 Import
-```
+```typescript
 var ZIP = require('ZipValidator')
 var zipInstance = new ZIP();
 ```
@@ -143,21 +143,21 @@ var zipInstance = new ZIP();
 
 Simple example 
 `SimpleModule.ts`
-```javascript
+```typescript
 import m = require("mod");
 export let t = m.something + 1;
 ```
 
 How it got compiled in AMD ( require.js )
 `AMD / RequireJS SimpleModule.js`
-```
+```typescript
 define(["require", "exports", "./mod"], function (require, exports, mod_1) {
     exports.t = mod_1.something + 1;
 });
 ```
 
 How it got compiled in common js ( NodeJS )
-```
+```typescript
 var mod_1 = require("./mod");
 exports.t = mod_1.something + 1;
 ```
@@ -176,7 +176,7 @@ For example, if you use an external script that defines `var externalModule`, yo
 
 We can also re-export a declared variable through a different name like below
 `App.ts`
-```typescript=
+```typescript
 declare let $: JQuery;
 export default $;
 ```
@@ -202,7 +202,7 @@ export default $;
  - To maintain type safety, we can use the typeof keyword. The typeof keyword, when used in a type position, produces the type of a value, in this case the type of the module.
 
 Dynamic loading in nodejs
-```
+```typescript
 declare function require(moduleName: string): any;
 
 import { ZipCodeValidator as Zip } from "./ZipCodeValidator";
@@ -231,7 +231,7 @@ https://www.typescriptlang.org/docs/handbook/modules.html
 
 Some module loaders such as SystemJS and AMD allow non-JavaScript content to be imported. 
 
-```typescript=
+```typescript
 declare module "*!text" {
     const content: string;
     export default content;
@@ -239,7 +239,7 @@ declare module "*!text" {
 ```
 
 Another 
-```typescript=
+```typescript
 import fileContent from "./xyz.txt!text";
 import data from "json!http://example.com/data.json";
 console.log(data, fileContent);
@@ -249,12 +249,12 @@ console.log(data, fileContent);
 Some libraries are designed to be used in many module loaders, or with no module loading (global variables). These are known as UMD modules. These libraries can be accessed through either an import or a global variable. For example:
 
 `math-lib.d.ts`
-```javascript=
+```typescript
 export function isPrime(x: number): boolean;
 export as namespace mathLib;
 ```
 
-```javascript=
+```typescript
 import { isPrime } from "math-lib";
 isPrime(2);
 mathLib.isPrime(2); // ERROR: can't use the global definition from inside a module
@@ -262,7 +262,7 @@ mathLib.isPrime(2); // ERROR: can't use the global definition from inside a modu
 
 It can also be used as a global variable, but only inside of a script. (A script is a file with no imports or exports.)
 
-```javascript=
+```typescript
 mathLib.isPrime(2);
 ```
 

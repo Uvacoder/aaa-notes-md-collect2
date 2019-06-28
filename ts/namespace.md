@@ -18,7 +18,7 @@ After using namespace
 ## Validator Examples
 
 ### Without namespace
-```javascript=
+```typescript
 interface StringValidator {
     isAcceptable(s: string): boolean;
 }
@@ -56,7 +56,7 @@ for (let s of strings) {
 ```
 
 ### After using namespace
-```javascript=
+```typescript
 namespace Validation {
     export interface StringValidator {
         isAcceptable(s: string): boolean;
@@ -95,7 +95,7 @@ for (let s of strings) {
 ```
 
 ### Splitting across file
-```javascript=
+```typescript
 `Validation.ts`
 namespace Validation {
     export interface StringValidator {
@@ -104,7 +104,7 @@ namespace Validation {
 }
 ```
 `LettersOnlyValidator.ts`
-```javascript=
+```typescript
 /// <reference path="Validation.ts" />
 namespace Validation {
     const lettersRegexp = /^[A-Za-z]+$/;
@@ -117,7 +117,7 @@ namespace Validation {
 ```
 
 `ZipCodeValidator.ts`
-```javascript=
+```typescript
 /// <reference path="Validation.ts" />
 namespace Validation {
     const numberRegexp = /^[0-9]+$/;
@@ -131,7 +131,7 @@ namespace Validation {
 
 `Test.ts`
 
-```javascript=
+```typescript
 /// <reference path="Validation.ts" />
 /// <reference path="LettersOnlyValidator.ts" />
 /// <reference path="ZipCodeValidator.ts" />
@@ -166,7 +166,7 @@ Actual
 ## Aliases
 Declaring namespace inside another namespace and how to use it
 
-```javascript=
+```typescript
 namespace Shapes {
     export namespace Polygons {
         export class Triangle { }
@@ -184,7 +184,7 @@ let sq = new Shapes.Polygons.Square();
 
 
 store with extension `.d.ts`
-```javascript=
+```typescript
 declare namespace D3 {
  export interface Selectors {
         select: {
