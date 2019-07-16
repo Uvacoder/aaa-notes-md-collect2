@@ -1,0 +1,30 @@
+.vscode-body h1,
+.vscode-body h2,
+.vscode-body h3,
+.vscode-body h4,
+.vscode-body h5,
+.vscode-body h6 {
+    color: navy;
+}
+
+.vscode-body{
+    background: #e1e1e8;
+    color:black;
+}
+
+.vscode-body p.code-line code {
+    background: #f7f7f9;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #e01e5a;
+    border: 0.5px solid silver;
+}
+
+.vscode-dark pre{
+    background:rgba(10, 10, 10)
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before{
+    border-left:2px solid grey;
+}
+

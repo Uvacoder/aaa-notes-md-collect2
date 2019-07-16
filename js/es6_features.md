@@ -84,6 +84,26 @@ var totalStudents = array[0],
 ```
 
 ### Object
+es6
+```javascript
+const heroes = [
+      { id: 11, name: 'dr strange' },
+      { id: 12, name: 'spiderman' },
+    ];
+var marvel = {heroes};
+marvel.heroes == heroes
+Object.keys(marvel) //heroes
+```
+
+es5
+```
+const heroes = [
+      { id: 11, name: 'dr strange' },
+      { id: 12, name: 'spiderman' },
+    ];
+marvel.heroes = heroes;
+```
+
 
 es6
 ```javascript
