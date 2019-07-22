@@ -10,7 +10,7 @@ greet('Harry Kane');
 ````
 
 ## For loop
-```javascript=
+```js
 var names = ['john' , 'ryan', 'jack']
 for(var name of names){
 	console.log(name)
@@ -18,7 +18,7 @@ for(var name of names){
 ```
 
 ## Template Strings
-```javascript=
+```js
 var firstName = 'sivashanmugam';
 var lastName = 'kannan'
 var fullname = `${firstName} ${lastName}`;
@@ -27,7 +27,7 @@ console.log(fullname) //sivashanmugam kannan
 
 ## Lamdas
 By default inside a class consturctor `this` variable inside eventListners does't mention the `object instance` created
-```javascript=
+```js
 function Counter(el) {
     var container = document.getElementById('container');
     this.count = 0;
@@ -163,7 +163,7 @@ greet('Harry Kane');
 ## Spread Operator
 When we don't how many parameters the function is going to have in that case we use spread operator
 es6
-```javascript=
+```js
 function calculate(action, ...values){
 	if(action == 'add'){
 		var i = 0, total;
@@ -176,7 +176,7 @@ function calculate(action, ...values){
 calculate('add', 1,2,3,4,5);
 ```
 es5
-```javascript=
+```js
 'use strict';
 
 function calculate(action) {
@@ -194,7 +194,7 @@ calculate('add', 1, 2, 3, 4, 5);
 
 ### Another example for spread
 es6
-```javascript=
+```js
 var source = [3, 4, 5];
 var target = [ 1, 2, ...source, 6, 7 ];
 ```
@@ -204,20 +204,20 @@ es5
 var source = [3, 4, 5];
 var target = [1, 2].concat(source, [6, 7]);
 ```
-### Computed properties 
+## Computed properties 
 es6
 ```javascript
 var fruit_var = 'fruit'
 var eatables = {[fruit_var]: 'Apple', vegetable: 'Carrot'}
 ```
 es5
-```javascript=
+```js
 var eatables = {vegetable: 'Carrot'}
 var fruit_var = 'fruit'
 eatables[fruit_var] = 'Apple'
 ```
 Another example for computed properties
-```javascript=
+```js
 const osPrefix = 'os_';
 
 var support = {
@@ -231,9 +231,9 @@ function isSupported(os) {
 }
 ```
 
-### Let and const
+## Let and const
 Before we discuss about its usage, We will see it's behaviour inside Block Environment, Block environment is nothing but the scope between two curly brace. 
-```javascript=
+```js
 // Global Environment
 function Random(){
 	//Function Environment
@@ -248,7 +248,7 @@ If we define the a variable with `var` keyword that variable will be defined to 
 
 But if define using `let` or `const` it will be defined to the nearest Block environment and it will be accessible in function environment.
 
-```javascript=
+```js
 // Global Environment
 function Random(){
 	//Function Environment
@@ -264,9 +264,9 @@ function Random(){
 }
 ```
 
-##### Lets see How var and let workds works inside a forloop
+### Lets see How var and let workds works inside a forloop
 
-```javascript=
+```js
 var arr = ['Red', 'Blue', 'Green']
 for(var i =0; i < 3;i++){
 	setTimeout(function(){
@@ -279,7 +279,7 @@ The above example will print the below line `4` times
 the Value of i is 4 and array value is undefined 
 ```
 For loop with `let`
-```javascript=
+```js
 var arr = ['Red', 'Blue', 'Green']
 for(let i = 0; i < 3;i++){
 	setTimeout(function(){
@@ -297,19 +297,19 @@ The Reason being,  Upon each For loop execution a new block scope will be create
 
 So setTimeout callback considers `i` from block scope not from function scope. 
 
-##### let
+#### let
 variabled defined using let keyword can be modified even after it's declaration, It is same as `var` except it considers block environment during definition.
 
 
-##### const
+#### const
 on the other hand variables defined const keyword cannot be changed for Non-Objects. If we try it will throw exception.
-```javascript=
+```js
 	const name = 'sivashanmugam'
 	name = 'karthi'; //THROWS EXCEPTION
 ```
 
 But for objects the behaviour is different, Only the reference of the object cannot be changed, Which means the cannot have any other object reference or Non-object value
-```javascript=
+```js
 const studentTopper = {}
 studentTopper.name = 'Sivashanmugam'; //WORKS FINE 
 studentTopper.name = 'Karthi'; //WORKS FINE
@@ -323,46 +323,45 @@ studentTopper = teacherHot; //throws Exception
 studentTopper = 'karthi' //throws Exception
 ```
 
-### class keyword
+## class keyword
+
 Why class keyword was introduced
 
 many developers, especially those from a classical object-oriented background, would prefer a simplification or abstraction of JavaScript’s inheritance system into one that they’re more familiar with
 
 This inevitably leads toward the realm of classes, even though JavaScript doesn’t support classical inheritance natively. As a response to this need, several JavaScript libraries that simulate classical inheritance have popped up. Because each library implements classes in its own way, the ECMAScript committee has standardized the syntax for simulating class-based inheritance.
 
-![](https://i.imgur.com/hL6myoh.png)
+![reference](https://i.imgur.com/hL6myoh.png)
 
 ### Static keyword inside Class
-```javascript=
-	class Ninja {
-		constructor(swordLength){
-			this.swordLength = swordLength;
-		}
-		function swingSword(){
-			return true;
-		}
-		static function compare(ninja1, ninja2){
-			return ninja1.swordLength - ninja2.swordLength;
-		}
+
+```js
+class Ninja {
+    constructor(swordLength){
+		this.swordLength = swordLength;
 	}
-	
-	var ninja1 = new Ninja(4);
-	var ninja2 = new Ninja(3);
-	console.log(ninja1.compare) //undefined
-	console.log(ninja2.compare) //undefined
-	
-	console.log(Ninja.compare(ninja1, ninja2)); //1
-	
-	
+	function swingSword(){
+		return true;
+	}
+	static function compare(ninja1, ninja2){
+		return ninja1.swordLength - ninja2.swordLength;
+	}
+}
+var ninja1 = new Ninja(4);
+var ninja2 = new Ninja(3);
+console.log(ninja1.compare) //undefined
+console.log(ninja2.compare) //undefined
+
+console.log(Ninja.compare(ninja1, ninja2)); //1	
 ```
 
 ![](https://i.imgur.com/tUFl9tb.png)
 
-### Inheritance in es6 
+## Inheritance in es6 
 Before we see the inheritance of es6, Look at the note `inheritance` which compiles the different ways of inheritance in es5
 
 ![](https://i.imgur.com/673BCKg.png)
-```javascript=
+```js
 class Person{
 	constructor(name){
 		this.name = name;
@@ -374,7 +373,7 @@ class Person{
 ```
 ![](https://i.imgur.com/zcE6gSd.png)
 
-```javascript=
+```js
 class Ninja extends Person{
 	constructor(name, weapon){
 		super(name)
@@ -395,11 +394,11 @@ var ninja1 = new Ninja('shiva', 'sword');
 
 
 
-### super keyword
+## super keyword
 
 
-### Proxy
-```javascript=
+## Proxy
+```js
 var emporer = {
 	'name' : 'Siva'
 }
@@ -428,12 +427,12 @@ In the above example we have only gone through two traps
 
 Some functions and conditions which cannot be trapped in proxy `instanceOf` and `typeOf`. 
 
-### Map 
+## Map 
 Before jumping in to the new Map keyword, lets go back and understand why it requires in the first place,
 
-#### Using regular objects as maps and its drawbacks
+### Using regular objects as maps and its drawbacks
 
-##### Examle - 1 dictionary
+#### Examle - 1 dictionary
 
 Imagine that somewhere on our site we need to access the translation for the word constructor, so we extend the dictionary example into the following code.
 
@@ -445,11 +444,11 @@ So when we try to access `dictionary['ja']['constrctor']` it is expected to retu
 
 But it returns `function Object() {[native Code]}`, Because every object will have a constructor property.
 
-##### Examle - 2 DOM elements maping
+#### Examle - 2 DOM elements maping
 
 In this example we set an object as a property for an object, When we do that instead of the object the string will stored.
 
-```javascript=
+```js
 var siva = { name:'sivashanmugam'}
 var mapObjCompanies = {};
 mapObjCompanies[siva] = {workedCompanies : ['funtoot', 'higherone', 'indosakura']}
@@ -458,17 +457,18 @@ assert(Object.keys(mapObjCompanies) === ["[object Object]"]);
 ```
 As we can see `mapObjCompanies` contains `[object Object]` as it's property, When 
 
-#### Solution through Map keyword
-```javascript=
+### Solution through Map keyword
+
+```js
 var ninja1 = {name:'hatori'};
 var ninja2 = {name:'goku'};
 ninjaHomeLandMap.set(ninja1, {homeLand: "tokyo"});
 ninjaHomeLandMap.set(ninja2, {homeLand: "herishima"});
 assert(ninjaHomeLandMap.get(ninja1).homeLand == "tokyo", 'ninja1 is from tokyo')
-
 ```
+
 ![](https://i.imgur.com/VqYwGrs.png)
-```javascript=
+```js
 assert(ninjaHomeLandMap.size == 2 ,'Size is two');
 assert(ninjaHomeLandMap.has(ninja1) == true, 'Contains ninja1 in map')
 ninjaHomeLandMap.delete(ninja2)
@@ -482,8 +482,10 @@ for(var item of ninjaHomeLandMap){
 }
 ```
 
-### Set and List
-#### Set
+## Set and List
+
+### Set
+
 ![](https://i.imgur.com/bNKsJzb.png)
 
 ```javascript
@@ -493,8 +495,9 @@ var warriors = new Set([...samurai, ...ninja, 'bahubali']);
 console.log(warriors) // Set(4) {"jackson", "hattori", "siva", "bahubali"}
 ```
 
-### Symbols 
-```javascript=
+## Symbols 
+
+```js
 var symbol_1 = Symbol('symbol one');
 var obj = {}
 console.log(symbol_1) //Symbole(symbol one);
@@ -506,8 +509,9 @@ console.log(symbol_one) //Symbole(symbol one);
 
 ![](https://i.imgur.com/DtMgWcP.png)
 
-#### Behaviour
-```javascript=
+### Behaviour
+
+```js
 var symbol_1 = Symbol('symbol one');
 console.log(symbol_1) //Symbole(symbol one);
 console.log(symbol_1 + ' haha') // throw error
@@ -518,13 +522,9 @@ const globalSym = Symbol.for('foo'); // global symbol
 console.log(Symbol.keyFor(globalSym));
 ```
 
-
-
-#### Use case
+### Use case
 
 <the use cases on yet to be fully explored >
 The use case will be described here breifly, The use he has explained is keeping track of `isMoving` property on a DOM element before we apply a css transition.
 
 https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/
-
-

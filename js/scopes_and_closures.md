@@ -77,3 +77,25 @@ settimeout(function(){
 	console.log(name) //name is accessed through closure scope here
 }, 2000)
 ```
+
+### Find out the answer ( Test )
+
+```js
+let deck = {
+    suits: ["hearts", "spades", "clubs", "diamonds"],
+    cards: Array(52),
+    createCardPicker: function() {
+        return function() {
+            let pickedCard = Math.floor(Math.random() * 52);
+            let pickedSuit = Math.floor(pickedCard / 13);
+
+            return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+        }
+    }
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+```
+
+[Answer and explnation](https://www.typescriptlang.org/docs/handbook/functions.html#this-and-arrow-functions)
