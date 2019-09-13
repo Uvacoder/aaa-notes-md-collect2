@@ -253,3 +253,26 @@ We can also check whether it's sealed through
 Object.isSealed(obj); // === true
 ```
 
+### Object.values
+
+Returns object property values in a array
+
+```js
+var person = {
+  'name':{
+    'firstname' : 'siva',
+    'lastname' : 'shanmugam'
+  },
+  'age' : {
+    'value':12
+  }
+}
+Object.values(person)
+/*
+[
+  {firstname: "siva", lastname: "shanmugam"},
+  {value: 12}
+]
+ */
+```
+

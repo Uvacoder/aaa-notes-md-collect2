@@ -254,35 +254,165 @@ it is part of `FormsModule`, need to be imported in NgModule before using NgMode
 <input [(ngModel)]="currentItem.name" id="example-ngModel">
 ```
 
-## input
+### ngSwitch
 
-### Example 1
-
-```html
-<input [(name)] />
-<button (click)="add()"></button>
-```
-
-Inside component
+ngSwitch is like the JavaScript switch statement. It displays one element from among several possible elements, based on a switch condition. Angular puts only the selected element into the DOM.
 
 ```ts
-private name : string;
-add():{
-  this.nameService.add(name);
+<div [ngSwitch]="currentItem.feature">
+  <app-stout-item    *ngSwitchCase="'stout'"    [item]="currentItem"></app-stout-item>
+  <app-device-item   *ngSwitchCase="'slim'"     [item]="currentItem"></app-device-item>
+  <app-lost-item     *ngSwitchCase="'vintage'"  [item]="currentItem"></app-lost-item>
+  <app-best-item     *ngSwitchCase="'bright'"   [item]="currentItem"></app-best-item>
+  <app-unknown-item  *ngSwitchDefault           [item]="currentItem"></app-unknown-item>
+</div>
+```
+
+## Template reference variables (#var)
+
+### As input binder
+
+```html
+<input #phone placeholder="phonenumber" />
+<button (click)="callPhone(phone.value)">Call</button>
+```
+
+### As a reference to element it present
+
+```html
+<div>
+  <h2>Template reference variable with disabled button</h2>
+  <p>btn refers to the button element.</p>
+  <button
+    #btn
+    disabled
+    [innerHTML]="'disabled by attribute: ' + btn.disabled"
+  ></button>
+</div>
+```
+
+### Using As a reference to form
+
+```html
+<form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)"> <!-- onSubmit function will be defined in component -->
+  <label for="name"
+    >Name <input class="form-control" name="name" ngModel required />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+<p>JSON: {{ itemForm.form.value | json }}</p> <!-- will show the value which we type in name input -->
+```
+
+## @Input and @Output properties
+
+### @Input
+
+![Input decorator](./images/2019-08-02-18-51-25.png)
+
+```html
+<parent-component>
+  <child-component></child-component>
+</parent-component>
+```
+
+Here, the `<child-component>` selector, or child directive, is embedded within a `<parent-component>`, which serves as the child's context.
+
+- Use the `@Input()` decorator in a child component or directive to let Angular know that a property in that component can receive its value from its parent component.
+
+#### Usage of @Input in child component
+
+```ts
+import { Component, Input } from '@angular/core'; // First, import Input
+export class ItemDetailComponent {
+  @Input() item: string; // decorate the property with @Input()
 }
 ```
 
-### Example 2
-
-```html
-    <input #heroName />
-    <button (click)="add(heroName.value); heroName.value=''">
+Passing the value to child
+```ts
+<app-item-detail [item]="currentItem"></app-item-detail>
 ```
 
-inside component
+
+![](./images/2019-08-02-18-49-42.png)
+
+### @Output
+
+In child
 
 ```ts
-add(name:string):{
-  this.nameService.add(name);
+import { Output, EventEmitter } from '@angular/core';
+export class ItemOutputComponent {
+
+  @Output() deleteRequest = new EventEmitter<string>();
+  @Input() item: string; // decorate the property with @Input()
+
+  listItem(){
+    console.log(this.item)
+  }
+
+  addNewItem(value: string) {
+  }
+
+  deleteItem(value: string){
+    this.deleteRequest.emit(value);
+  }
 }
+```
+
+![Input and output together](./images/2019-08-02-18-56-16.png)
+
+## Template expression operators
+
+### The pipe operator ( | )
+
+```html
+<p>Title through uppercase pipe: {{title | uppercase}}</p>
+```
+
+```html
+<!-- convert title to uppercase, then to lowercase -->
+<p>Title through a pipe chain: {{title | uppercase | lowercase}}</p>
+```
+
+json pipe
+
+```html
+<!-- Helps debugging -->
+<p>Item json pipe: {{item | json}}</p>
+```
+
+output of json pipe
+
+```json
+{ "name": "Telephone",
+  "manufactureDate": "1980-02-25T05:00:00.000Z",
+  "price": 98 }
+```
+
+### Safe navigation operator ( ? )
+
+```html
+<p>The item name is: {{item?.name}}</p>
+```
+
+If there is no safe operator then error will be thrown `TypeError: Cannot read property 'name' of null.` and rendering will be broken for the component
+
+### The non-null assertion operator ( ! )
+
+it tells the TypeScript type checker to suspend strict null checks for a specific property expression.
+
+```html
+<p *ngIf="item">The item's color is: {{item!.color}}</p>
+```
+
+## Build in template functions
+
+### $(any) type cast function
+
+When the Angular compiler turns this template into TypeScript code, it prevents TypeScript from reporting that `bestByDate` is not a member of the `item` object when it runs type checking on the template.
+
+```html
+<p>The item's undeclared best by date is: {{$any(item).bestByDate}}</p>
 ```

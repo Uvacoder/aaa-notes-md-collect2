@@ -28,3 +28,11 @@
     border-left:2px solid grey;
 }
 
+li code{
+    background: #f7f7f9;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #e01e5a;
+    border: 0.5px solid silver;
+}
+
