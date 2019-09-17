@@ -152,6 +152,8 @@ Adding a new class without overwriting the existing class attirbute and values
 <div class="item clearance special" [class.item-clearance]="itemClearance">Add another class</div>
 ```
 
+[online example link](https://stackblitz.com/edit/class-binding-example1)  
+
 Class toggle
 
 ```html
@@ -187,13 +189,11 @@ delete() {
 }
 ```
 
+![Custom Event example](2019-09-17-11-02-04.png)
+
 ```html
 <app-item-detail (deleteRequest)="deleteItem($event)" [item]="currentItem"></app-item-detail>
 ```
-
-## Two way data binding ( parent child component )
-
-[](https://angular.io/guide/template-syntax#basics-of-two-way-binding)
 
 ## Built in directives
 

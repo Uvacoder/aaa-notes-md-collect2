@@ -2,7 +2,7 @@
 
 - Angular has its own modularity system called `NgModules`
 
-- `NgModules` are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities. 
+- `NgModules` are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities.
 
 - They can contain components, service providers, and other code files whose scope is defined by the containing NgModule.
 
@@ -27,7 +27,7 @@ The `@NgModule()` decorator is a function that takes a single `metadata object`.
 
 ngModule can include any number of additional components, which *can be loaded through the router or created through the template*.
 
-![component view](2019-07-16-15-11-27.png)
+![component view](./images/2019-07-16-15-11-27.png)
 
 ## imports  
 
@@ -51,4 +51,3 @@ Also need to add the module in `imports` of ngModule to make it available throug
 imports:      [ BrowserModule ],
 
 ```
-
