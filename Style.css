@@ -36,3 +36,14 @@ li code{
     border: 0.5px solid silver;
 }
 
+.vscode-dark table > thead > tr > th {
+    border:1px solid black;
+}
+
+.vscode-dark table  tbody  tr  td {
+    border:1px solid black;
+}
+
+.vscode-dark h1, .vscode-dark hr, .vscode-dark table > tbody > tr + tr > td {
+    border:1px solid black;
+}
