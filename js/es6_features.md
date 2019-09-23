@@ -1,23 +1,26 @@
 # ES6 features
 
-## Default valur for function parameter
+## Default value for function parameter  
+
 ```javascript
 function greet(name, greetWith = 'Hello'){
-	console.log(greetWith+' '+name);
+    console.log(greetWith+' '+name);
 }
 greet('Sergio Ramos', 'Ola');
 greet('Harry Kane');
-````
+```
 
-## For loop
+## For loop iteration of array using *of* keyword
+
 ```js
 var names = ['john' , 'ryan', 'jack']
 for(var name of names){
-	console.log(name)
+    console.log(name)
 }
 ```
 
 ## Template Strings
+
 ```js
 var firstName = 'sivashanmugam';
 var lastName = 'kannan'
@@ -25,29 +28,32 @@ var fullname = `${firstName} ${lastName}`;
 console.log(fullname) //sivashanmugam kannan
 ```
 
-## Lamdas
+## Arrow function and this scope
+
 By default inside a class consturctor `this` variable inside eventListners does't mention the `object instance` created
+
 ```js
 function Counter(el) {
     var container = document.getElementById('container');
     this.count = 0;
-	el.addEventListener('click', function(event){
-		this.count += 1 //here `this`mentions global variable not the object instance
-		el.innerHTML = this.count; 
-	})
+    el.addEventListener('click', function(event){
+        this.count += 1 //here `this`mentions global variable not the object instance
+        el.innerHTML = this.count;
+    })
 }
 new Counter(container);
 ```
 
 To fix the `this` keyword issue inside event listner, We store the object instance inside the object instance with a variable `_this`
+
 ```javascript
 function Counter(el) {
 var _this = this;
     _this.count = 0;
-	el.addEventListener('click', function(event){
-		_this.count += 1 //here `this`mentions global variable not the object instance
-		el.innerHTML = _this.count; 
-	})
+    el.addEventListener('click', function(event){
+        _this.count += 1 //here `this`mentions global variable not the object instance
+        el.innerHTML = _this.count;
+    })
 }
 ```
 
@@ -59,23 +65,26 @@ But to make the conversion possible we have use ES6 arrow function instead of no
 function Counter(el) {
         this.count = 0;
         el.innerHTML = this.count;
-        el.addEventListener('click', 
+        el.addEventListener('click',
             (event) => el.innerHTML = (this.count += 1))
     }
 ```
 
 By pasting the above script in babel es6 to es5 we can see the difference.
 
-
-## Destructuring 
+## Destructuring
 
 ### Array
+
 ES6 syntax
+
 ```javascript
 var array = [32, "John", true];
 var [totalStudents, teacherName, isMale] = array;
 ```
+
 ES5 Conversion
+
 ```javascript
 var array = [32, "John", true];
 var totalStudents = array[0],
@@ -84,7 +93,9 @@ var totalStudents = array[0],
 ```
 
 ### Object
+
 es6
+
 ```javascript
 const heroes = [
       { id: 11, name: 'dr strange' },
@@ -96,7 +107,8 @@ Object.keys(marvel) //heroes
 ```
 
 es5
-```
+
+```javascript
 const heroes = [
       { id: 11, name: 'dr strange' },
       { id: 12, name: 'spiderman' },
@@ -104,31 +116,33 @@ const heroes = [
 marvel.heroes = heroes;
 ```
 
-
 es6
+
 ```javascript
 function todoVarDecl(id){
-	var todo = {
-		"id": id,
-		"name": "sivashanmugam",
-		"location": "bengaluru"
-	}
-	return todo
+    var todo = {
+        "id": id,
+        "name": "sivashanmugam",
+        "location": "bengaluru"
+    }
+    return todo
 }
 
 var {id, name, location} = todo(21);
 ```
+
 es5
+
 ```javascript
 "use strict";
 
 function todoVarDecl(id) {
-	var todo = {
-		"id": id,
-		"name": "sivashanmugam",
-		"location": "bengaluru"
-	};
-	return todo;
+    var todo = {
+        "id": id,
+        "name": "sivashanmugam",
+        "location": "bengaluru"
+    };
+    return todo;
 }
 
 var _todo = todo(21),
@@ -136,87 +150,107 @@ var _todo = todo(21),
     name = _todo.name,
     location = _todo.location;
 ```
+
 Destructuring and optional parameter
+
 es6
+
 ```javascript
 function greet({name, greetWith:greetWith = 'Hello'}){
-	console.log(`${greetWith} ${name}`);
+    console.log(`${greetWith} ${name}`);
 }
 greet('Sergio Ramos', 'Ola');
 greet('Harry Kane');
 ```
+
 es6
+
 ```javascript
 'use strict';
 
 function greet(_ref) {
-	var name = _ref.name,
-	    _ref$greetWith = _ref.greetWith,
-	    greetWith = _ref$greetWith === undefined ? 'Hello' : _ref$greetWith;
+    var name = _ref.name,
+        _ref$greetWith = _ref.greetWith,
+        greetWith = _ref$greetWith === undefined ? 'Hello' : _ref$greetWith;
 
-	console.log(greetWith + ' ' + name);
+    console.log(greetWith + ' ' + name);
 }
 greet('Sergio Ramos', 'Ola');
 greet('Harry Kane');
 ```
 
 ## Spread Operator
+
 When we don't how many parameters the function is going to have in that case we use spread operator
 es6
+
 ```js
 function calculate(action, ...values){
-	if(action == 'add'){
-		var i = 0, total;
-		for(var i = 0;i < values.length;i++){
-			total = total + values[i]
-		}
-	}
-	return total;
+    if(action == 'add'){
+        var i = 0, total;
+        for(var i = 0;i < values.length;i++){
+            total = total + values[i]
+        }
+    }
+    return total;
 }
 calculate('add', 1,2,3,4,5);
 ```
+
 es5
+
 ```js
 'use strict';
 
 function calculate(action) {
-	if (action == 'add') {
-		var i = 0,
-		    total;
-		for (var i = 0; i < (arguments.length <= 1 ? 0 : arguments.length - 1); i++) {
-			total = total + (arguments.length <= i + 1 ? undefined : arguments[i + 1]);
-		}
-	}
-	return total;
+    if (action == 'add') {
+        var i = 0,
+            total;
+        for (var i = 0; i < (arguments.length <= 1 ? 0 : arguments.length - 1); i++) {
+            total = total + (arguments.length <= i + 1 ? undefined : arguments[i + 1]);
+        }
+    }
+    return total;
 }
 calculate('add', 1, 2, 3, 4, 5);
 ```
 
 ### Another example for spread
+
 es6
+
 ```js
 var source = [3, 4, 5];
 var target = [ 1, 2, ...source, 6, 7 ];
 ```
 
 es5
+
 ```javascript
 var source = [3, 4, 5];
 var target = [1, 2].concat(source, [6, 7]);
 ```
-## Computed properties 
+
+## Computed properties
+
 es6
+
 ```javascript
+
 var fruit_var = 'fruit'
 var eatables = {[fruit_var]: 'Apple', vegetable: 'Carrot'}
 ```
+
 es5
+
 ```js
 var eatables = {vegetable: 'Carrot'}
 var fruit_var = 'fruit'
 eatables[fruit_var] = 'Apple'
 ```
+
 Another example for computed properties
+
 ```js
 const osPrefix = 'os_';
 
@@ -232,18 +266,21 @@ function isSupported(os) {
 ```
 
 ## Let and const
-Before we discuss about its usage, We will see it's behaviour inside Block Environment, Block environment is nothing but the scope between two curly brace. 
+
+Before we discuss about its usage, We will see it's behaviour inside Block Environment, Block environment is nothing but the scope between two curly brace.
+
 ```js
 // Global Environment
 function Random(){
-	//Function Environment
-	if(){
-		var name = 'siva';
-		//Block Environment
-	}
-	console.log(name) //siva
+    //Function Environment
+    if(){
+        var name = 'siva';
+        //Block Environment
+    }
+    console.log(name) //siva
 }
 ```
+
 If we define the a variable with `var` keyword that variable will be defined to the nearest Function environenment or Global Environment. The block level environment ignored for variables with defined using `var`;
 
 But if define using `let` or `const` it will be defined to the nearest Block environment and it will be accessible in function environment.
@@ -251,16 +288,16 @@ But if define using `let` or `const` it will be defined to the nearest Block env
 ```js
 // Global Environment
 function Random(){
-	//Function Environment
-	if(){
-		//Block Environment
-		var name = 'siva';
-		let age = 18;
-		const dob = '15-dec-1994'
-	}
-	console.log(name) //siva
-	console.log(age) //undefined
-	console.log(dob) //undefined
+    //Function Environment
+    if(){
+        //Block Environment
+        var name = 'siva';
+        let age = 18;
+        const dob = '15-dec-1994'
+    }
+    console.log(name) //siva
+    console.log(age) //undefined
+    console.log(dob) //undefined
 }
 ```
 
@@ -269,11 +306,12 @@ function Random(){
 ```js
 var arr = ['Red', 'Blue', 'Green']
 for(var i =0; i < 3;i++){
-	setTimeout(function(){
-		console.log(`the Value of i is ${i} and array value is ${arr[i]})
-	})
+    setTimeout(function(){
+        console.log(`the Value of i is ${i} and array value is ${arr[i]})
+    })
 }
 ```
+
 The above example will print the below line `4` times
 ```
 the Value of i is 4 and array value is undefined 
@@ -282,9 +320,9 @@ For loop with `let`
 ```js
 var arr = ['Red', 'Blue', 'Green']
 for(let i = 0; i < 3;i++){
-	setTimeout(function(){
-		console.log(`the Value of i is ${i} and array value is ${arr[i]})
-	})
+    setTimeout(function(){
+        console.log(`the Value of i is ${i} and array value is ${arr[i]})
+    })
 }
 ```
 Result
@@ -304,8 +342,8 @@ variabled defined using let keyword can be modified even after it's declaration,
 #### const
 on the other hand variables defined const keyword cannot be changed for Non-Objects. If we try it will throw exception.
 ```js
-	const name = 'sivashanmugam'
-	name = 'karthi'; //THROWS EXCEPTION
+    const name = 'sivashanmugam'
+    name = 'karthi'; //THROWS EXCEPTION
 ```
 
 But for objects the behaviour is different, Only the reference of the object cannot be changed, Which means the cannot have any other object reference or Non-object value
@@ -338,21 +376,21 @@ This inevitably leads toward the realm of classes, even though JavaScript doesnâ
 ```js
 class Ninja {
     constructor(swordLength){
-		this.swordLength = swordLength;
-	}
-	function swingSword(){
-		return true;
-	}
-	static function compare(ninja1, ninja2){
-		return ninja1.swordLength - ninja2.swordLength;
-	}
+        this.swordLength = swordLength;
+    }
+    function swingSword(){
+        return true;
+    }
+    static function compare(ninja1, ninja2){
+        return ninja1.swordLength - ninja2.swordLength;
+    }
 }
 var ninja1 = new Ninja(4);
 var ninja2 = new Ninja(3);
 console.log(ninja1.compare) //undefined
 console.log(ninja2.compare) //undefined
 
-console.log(Ninja.compare(ninja1, ninja2)); //1	
+console.log(Ninja.compare(ninja1, ninja2)); //1    
 ```
 
 ![](https://i.imgur.com/tUFl9tb.png)
@@ -363,25 +401,25 @@ Before we see the inheritance of es6, Look at the note `inheritance` which compi
 ![](https://i.imgur.com/673BCKg.png)
 ```js
 class Person{
-	constructor(name){
-		this.name = name;
-	}
-	dance(){
-		return true;
-	}
+    constructor(name){
+        this.name = name;
+    }
+    dance(){
+        return true;
+    }
 }
 ```
 ![](https://i.imgur.com/zcE6gSd.png)
 
 ```js
 class Ninja extends Person{
-	constructor(name, weapon){
-		super(name)
-		this.weapon = weapon;
-	}
-	wieldWeapon(){
-		return true;
-	}
+    constructor(name, weapon){
+        super(name)
+        this.weapon = weapon;
+    }
+    wieldWeapon(){
+        return true;
+    }
 }
 ```
 ![](https://i.imgur.com/lMxRxku.png)
@@ -400,18 +438,18 @@ var ninja1 = new Ninja('shiva', 'sword');
 ## Proxy
 ```js
 var emporer = {
-	'name' : 'Siva'
+    'name' : 'Siva'
 }
 var representative = new Proxy(emporer, {
-	get:(target, key){
-		console.log('Accessing through proxy');
-		return key in target ? target[key] : 'Dont bother Emporer'
-	}
-	
-	set: (target, key, value){
-		console.log('Setting value of through proxy')
-		target[key] = value;
-	}
+    get:(target, key){
+        console.log('Accessing through proxy');
+        return key in target ? target[key] : 'Dont bother Emporer'
+    }
+    
+    set: (target, key, value){
+        console.log('Setting value of through proxy')
+        target[key] = value;
+    }
 })
 console.log(emporer.name) //'Siva'
 console.log(representative.name) //Accessing through proxy //Siva
