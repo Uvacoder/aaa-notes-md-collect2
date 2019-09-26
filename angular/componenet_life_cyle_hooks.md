@@ -27,4 +27,22 @@ export class PeekABoo implements OnInit {
 
 [Refer here](https://angular.io/guide/lifecycle-hooks#lifecycle-sequence)
 
-![](2019-09-19-10-32-45.png)
+![angular-life-cyle-events](2019-09-19-10-32-45.png)
+
+## Is interfaces required for life-cycle events
+
+In the example code We have mentioned the `OnInit` interface to the component class
+
+`export class PeekABoo implements OnInit {` 
+
+The JavaScript language doesn't have interfaces. Angular can't see TypeScript interfaces at runtime because they disappear from the transpiled JavaScript.
+
+We don't have to add the lifecycle hook interfaces to directives and components.
+
+Angular instead *inspects directive and component classes and calls the hook methods if they are defined*. Angular finds and calls methods like `ngOnInit()`, **with or without the interfaces**
+
+it's good practice to add interfaces to TypeScript directive classes in order to benefit from strong typing and editor tooling.
+
+## Example all hooks
+
+[click here to see example](http://stackblitz.com/angular/xeoobrkorke)

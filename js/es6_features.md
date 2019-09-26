@@ -303,6 +303,8 @@ function Random(){
 
 ### Lets see How var and let workds works inside a forloop
 
+#### With var
+
 ```js
 var arr = ['Red', 'Blue', 'Green']
 for(var i =0; i < 3;i++){
@@ -313,10 +315,11 @@ for(var i =0; i < 3;i++){
 ```
 
 The above example will print the below line `4` times
-```
-the Value of i is 4 and array value is undefined 
-```
-For loop with `let`
+
+the Value of `i` is 4 and array value is undefined
+
+#### With let
+
 ```js
 var arr = ['Red', 'Blue', 'Green']
 for(let i = 0; i < 3;i++){
@@ -325,38 +328,44 @@ for(let i = 0; i < 3;i++){
     })
 }
 ```
+
 Result
-```
+
+```js
 the Value of i is 0 and array value is Red
 the Value of i is 1 and array value is Blue
 the Value of i is 2 and array value is Yellow
 ```
+
 The Reason being,  Upon each For loop execution a new block scope will be created and as `i` variable is defined as let, The `i` value will be created in Block Environment upon each for.
 
-So setTimeout callback considers `i` from block scope not from function scope. 
+So setTimeout callback considers `i` from block scope not from function scope.
 
 #### let
+
 variabled defined using let keyword can be modified even after it's declaration, It is same as `var` except it considers block environment during definition.
 
-
 #### const
+
 on the other hand variables defined const keyword cannot be changed for Non-Objects. If we try it will throw exception.
+
 ```js
     const name = 'sivashanmugam'
     name = 'karthi'; //THROWS EXCEPTION
 ```
 
 But for objects the behaviour is different, Only the reference of the object cannot be changed, Which means the cannot have any other object reference or Non-object value
+
 ```js
 const studentTopper = {}
-studentTopper.name = 'Sivashanmugam'; //WORKS FINE 
+studentTopper.name = 'Sivashanmugam'; //WORKS FINE
 studentTopper.name = 'Karthi'; //WORKS FINE
 delete studentTopper.name; //WORKS FINE
 
 
 var studentLoser = {};
 const teacherHot = {};
-studentTopper = studentLoser; //throws Exception 
+studentTopper = studentLoser; //throws Exception
 studentTopper = teacherHot; //throws Exception
 studentTopper = 'karthi' //throws Exception
 ```
@@ -390,15 +399,17 @@ var ninja2 = new Ninja(3);
 console.log(ninja1.compare) //undefined
 console.log(ninja2.compare) //undefined
 
-console.log(Ninja.compare(ninja1, ninja2)); //1    
+console.log(Ninja.compare(ninja1, ninja2)); //1
 ```
 
-![](https://i.imgur.com/tUFl9tb.png)
+![Static method sample](https://i.imgur.com/tUFl9tb.png)
 
-## Inheritance in es6 
+## Inheritance in es6
+
 Before we see the inheritance of es6, Look at the note `inheritance` which compiles the different ways of inheritance in es5
 
-![](https://i.imgur.com/673BCKg.png)
+![Inheritance example](https://i.imgur.com/673BCKg.png)
+
 ```js
 class Person{
     constructor(name){
@@ -409,7 +420,8 @@ class Person{
     }
 }
 ```
-![](https://i.imgur.com/zcE6gSd.png)
+
+![Class prototype Object from dev tools](https://i.imgur.com/zcE6gSd.png)
 
 ```js
 class Ninja extends Person{
@@ -422,20 +434,21 @@ class Ninja extends Person{
     }
 }
 ```
-![](https://i.imgur.com/lMxRxku.png)
 
-```
+![Internal links of inheritance](https://i.imgur.com/lMxRxku.png)
+
+```js
 var ninja1 = new Ninja('shiva', 'sword');
 ```
 
-![](https://i.imgur.com/93WIoBk.png)
-
-
+![new instance value in chrome dev tools](https://i.imgur.com/93WIoBk.png)
 
 ## super keyword
 
+While extending (inheriting class) the parent class functions are only being get inherited, if we need to instance creation also need to be inherited javascript gives access to parent class constructor through `super` keyword, When calling super keyword inside the parent class consturctor `this` will be the child class instance object.
 
 ## Proxy
+
 ```js
 var emporer = {
     'name' : 'Siva'
@@ -445,7 +458,7 @@ var representative = new Proxy(emporer, {
         console.log('Accessing through proxy');
         return key in target ? target[key] : 'Dont bother Emporer'
     }
-    
+
     set: (target, key, value){
         console.log('Setting value of through proxy')
         target[key] = value;
@@ -458,14 +471,17 @@ representative.nickName = 'Kannan'; // Setting value through proxy
 
 ```
 
+## Proxy trap functions
+
 In the above example we have only gone through two traps
 `get` and `set` traps. But there are more traps like `apply` which will be applied when caling a function.
 `enumarate` trap will be called during `for in` loop
 `getPrototypeOf` and `setPrototypeOf` Will be invoked when setting or getting prototype object.
 
-Some functions and conditions which cannot be trapped in proxy `instanceOf` and `typeOf`. 
+Some functions and conditions which cannot be trapped in proxy `instanceOf` and `typeOf`.
 
-## Map 
+## Map
+
 Before jumping in to the new Map keyword, lets go back and understand why it requires in the first place,
 
 ### Using regular objects as maps and its drawbacks
@@ -491,15 +507,16 @@ var siva = { name:'sivashanmugam'}
 var mapObjCompanies = {};
 mapObjCompanies[siva] = {workedCompanies : ['funtoot', 'higherone', 'indosakura']}
 assert(Object.keys(mapObjCompanies) === ["[object Object]"]);
-
 ```
-As we can see `mapObjCompanies` contains `[object Object]` as it's property, When 
+
+As we can see `mapObjCompanies` contains `[object Object]` as it's property, When
 
 ### Solution through Map keyword
 
 ```js
 var ninja1 = {name:'hatori'};
 var ninja2 = {name:'goku'};
+ninjaHomeLandMap = new Map();
 ninjaHomeLandMap.set(ninja1, {homeLand: "tokyo"});
 ninjaHomeLandMap.set(ninja2, {homeLand: "herishima"});
 assert(ninjaHomeLandMap.get(ninja1).homeLand == "tokyo", 'ninja1 is from tokyo')
@@ -520,9 +537,7 @@ for(var item of ninjaHomeLandMap){
 }
 ```
 
-## Set and List
-
-### Set
+## Set
 
 ![](https://i.imgur.com/bNKsJzb.png)
 
@@ -533,7 +548,7 @@ var warriors = new Set([...samurai, ...ninja, 'bahubali']);
 console.log(warriors) // Set(4) {"jackson", "hattori", "siva", "bahubali"}
 ```
 
-## Symbols 
+## Symbols
 
 ```js
 var symbol_1 = Symbol('symbol one');
