@@ -490,11 +490,11 @@ Before jumping in to the new Map keyword, lets go back and understand why it req
 
 Imagine that somewhere on our site we need to access the translation for the word constructor, so we extend the dictionary example into the following code.
 
-![](https://i.imgur.com/F4A7rZB.png)
+![Map example](https://i.imgur.com/F4A7rZB.png)
 
 Lets say there is a word `constructor` which we forgot to define in the dictionary.
 
-So when we try to access `dictionary['ja']['constrctor']` it is expected to return `undefined`, 
+So when we try to access `dictionary['ja']['constrctor']` it is expected to return `undefined`
 
 But it returns `function Object() {[native Code]}`, Because every object will have a constructor property.
 
@@ -506,6 +506,7 @@ In this example we set an object as a property for an object, When we do that in
 var siva = { name:'sivashanmugam'}
 var mapObjCompanies = {};
 mapObjCompanies[siva] = {workedCompanies : ['funtoot', 'higherone', 'indosakura']}
+
 assert(Object.keys(mapObjCompanies) === ["[object Object]"]);
 ```
 
@@ -522,7 +523,8 @@ ninjaHomeLandMap.set(ninja2, {homeLand: "herishima"});
 assert(ninjaHomeLandMap.get(ninja1).homeLand == "tokyo", 'ninja1 is from tokyo')
 ```
 
-![](https://i.imgur.com/VqYwGrs.png)
+![Map example 2](https://i.imgur.com/VqYwGrs.png)
+
 ```js
 assert(ninjaHomeLandMap.size == 2 ,'Size is two');
 assert(ninjaHomeLandMap.has(ninja1) == true, 'Contains ninja1 in map')
@@ -539,7 +541,7 @@ for(var item of ninjaHomeLandMap){
 
 ## Set
 
-![](https://i.imgur.com/bNKsJzb.png)
+![Set example](https://i.imgur.com/bNKsJzb.png)
 
 ```javascript
 var samurai = ['jackson', 'hattori'];
@@ -560,7 +562,7 @@ obj[symbol_one] = 'ஒன்று';
 console.log(symbol_one) //Symbole(symbol one);
 ```
 
-![](https://i.imgur.com/DtMgWcP.png)
+![Symbole example](https://i.imgur.com/DtMgWcP.png)
 
 ### Behaviour
 
@@ -577,7 +579,7 @@ console.log(Symbol.keyFor(globalSym));
 
 ### Use case
 
-<the use cases on yet to be fully explored >
+(the use cases on yet to be fully explored)
 The use case will be described here breifly, The use he has explained is keeping track of `isMoving` property on a DOM element before we apply a css transition.
 
-https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/
+[Symbols in depth help link](https://hacks.mozilla.org/2015/06/es6-in-depth-symbols/)

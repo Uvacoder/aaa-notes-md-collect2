@@ -1,8 +1,10 @@
 # forEach, map, reduce, Filter, Every, Some, Find
 
 ## forEach
+
 Foreach takes a callback function and run that callback function on each element of array one by one.
-```javascript=
+
+```js
 var sample = [1, 2, 3];
 // es5
 sample.forEach(function (elem, index){
@@ -11,9 +13,10 @@ sample.forEach(function (elem, index){
 ```
 
 ## filter
+
 filter is that forEach just loop over the array and executes the callback but filter executes the callback and check its return value
 
-```javascript=
+```js
 var sample = [1, 2, 3] // yeah same array
 // es5
 var result = sample.filter(function(elem){
@@ -22,10 +25,12 @@ var result = sample.filter(function(elem){
 
 console.log(result) //[1,3]
 ```
+
 ## map
+
  makes it unique is it generate a new array based on your existing array.
- 
-```javascript=
+
+```js
 var sample = [1, 2, 3] // i am never gonna change Boo! Yeah
 // es5
 var mapped = sample.map(function(elem) {
@@ -37,34 +42,33 @@ console.log(mapped) // [10, 20, 30]
 
 ## reduce ( aggregating )
 
-```javascript=
+```js
 var array = [1,2,3,4]
 var sum = array.reduce(function(aggregate, number){
-	return aggregate + number
+    return aggregate + number
 },0)
 assert(sum === 10, 'aggregate is 10');
 ```
 
-```javascript=
+```js
 var array = [1,2,3,4]
 var sum = array.reduce(function(aggregate, number){
-	return aggregate + number
+    return aggregate + number
 },100)
 assert(sum === 110, 'aggregate is 110');
 ```
 
-```javascript=
+```js
 var array = [1,2,3,4]
 var sum = array.reduce(function(aggregate, number){
-	return aggregate + '--' +number
+    return aggregate + '--' +number
 },'siva')
 assert(sum === 'siva--1--2--3--4', 'aggregate return string');
 ```
 
-
 ## every and some ( returns Boolean )
 
-```javascript=
+```js
 var ninjas = [
 { name : 'katana', weapon : 'katana' }
 { name : 'shinchan' },
@@ -72,23 +76,24 @@ var ninjas = [
 ];
 
 var allNinjasAreNamed = ninjas.every(function(ninja){
-	'name' in ninja;
+    'name' in ninja;
 })
 
 var allNinjasAreArmed = ninjas.every(function(ninja){
-	'weapon' in ninja;
+    'weapon' in ninja;
 })
 assert(allNinjasAreNamed, 'All the ninjas are named');
 assert(!allNinjasAreArmed, 'Not all the ninjas armed');
 
 var someNinjasAreArmed = ninjas.some(function(ninja){
-	'weapon' in ninja
+    'weapon' in ninja
 })
 assert(someNinjasAreArmed, 'Some ninjas are armed');
 ```
 
-## find 
-```javascript=
+## find
+
+```js
 var ninjas = [
 { name : 'goku', weapon : 'katana' }
 { name : 'shinchan' },
@@ -96,13 +101,14 @@ var ninjas = [
 ];
 
 var result = ninjas.find(function(ninja){
-	ninja.weapon = 'needle';
+    return ninja.weapon == 'needle';
 })
 assert(ninja.name === 'goku', 'goku is weapon katana');
 ```
 
 ## findIndex
-```javascript=
+
+```js
 var ninjas = [
 { name : 'goku', weapon : 'katana' }
 { name : 'shinchan' },
@@ -110,17 +116,17 @@ var ninjas = [
 ];
 
 var result = ninjas.findIndex(function(ninja){
-	ninja.name = 'shinchan';
+    return ninja.name == 'shinchan';
 })
 assert(result === 1, 'Shinchan is sitting at 1st index')
-
 ```
 
 ## sort
-```javascript=
+
+```js
 var array = [5,3,1,2,4];
 array.sort(function(a,b){
-	return a-b;
+    return a-b;
 })
 console.log(array) // [1,2,3,4,5]
 ```
