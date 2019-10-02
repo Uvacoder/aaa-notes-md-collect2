@@ -73,12 +73,11 @@ When the event loop enters the poll phase and
 #### check phase
 
 - This phase allows a person to execute callbacks immediately after the poll phase has completed.
-- If the poll phase becomes idle and scripts have been queued with setImmediate(), the event loop may continue to the check phase rather than waiting.
+- If the poll phase becomes idle and scripts have been queued with `setImmediate()`, the event loop may continue to the check phase rather than waiting.
 
 #### close callbacks
 
 - If a socket or handle is closed abruptly (e.g. socket.destroy()), the 'close' event will be emitted in this phase.
-- Otherwise it will be emitted via process.nextTick().
 
 ### Process.nexttick
 
