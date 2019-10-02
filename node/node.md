@@ -1,5 +1,9 @@
 # node
 
+## Architecture
+![node architechture image](./images/nodejs_architech.jpg)
+
+
 ## Single threaded and Event Driven
 
 Node.js is an event-based platform
@@ -10,6 +14,18 @@ When Node.js starts, it initializes the `event loop`, processes the provided inp
 Javascript is a single-threaded, event-driven language. This means that we can attach listeners to events, and when a said event fires, the listener executes the callback we provided.
 
 There is only one thread that executes NodeJS code and this is the thread where the event loop is running.
+
+## v8 engine
+
+- written in C++
+- V8 translates JavaScript code into more efficient machine code instead of using an interpreter. It compiles JavaScript code into machine code at execution by implementing a JIT (Just-In-Time) compiler
+- V8 doesn’t produce bytecode or any intermediate code.
+
+## Libuv
+
+- Libuv is a cross-platform library focused on asynchronous I / O.
+- It’s your job to provide a loop of events and notifications based on callbacks and other activities.
+- As if that were not enough, libuv also offers other utilities such as timers, access to the OS file system asynchronously, child processes, and more.
 
 ## Eventloop
 
