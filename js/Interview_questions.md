@@ -40,8 +40,13 @@
 
 ## Iterable functions
 
-[Difference between foreach and map]()  
-[Difference between reduce and filter ?]()  
-[Difference between some and every ?]()  
-[What is find and findIndex ?]()  
-[How to sort a int array using sort function ?]()  
+[Difference between foreach and map](./iterable_functions.md#map)  
+[Difference between reduce and filter ?](./iterable_functions.md#reduce--aggregating-)  
+[Difference between some and every ?](./iterable_functions.md#every-and-some--returns-boolean-)  
+[What is find and findIndex ?](./iterable_functions.md#find)  
+[How to sort a int array using sort function ?](./iterable_functions.md#findindex)  
+
+## Functions
+
+[Difference between function declaration and function expression]()  
+[What is Immedietly Invoked Function Expression]()  

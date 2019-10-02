@@ -76,17 +76,17 @@ var ninjas = [
 ];
 
 var allNinjasAreNamed = ninjas.every(function(ninja){
-    'name' in ninja;
+    return 'name' in ninja;
 })
 
 var allNinjasAreArmed = ninjas.every(function(ninja){
-    'weapon' in ninja;
+    return 'weapon' in ninja;
 })
 assert(allNinjasAreNamed, 'All the ninjas are named');
 assert(!allNinjasAreArmed, 'Not all the ninjas armed');
 
 var someNinjasAreArmed = ninjas.some(function(ninja){
-    'weapon' in ninja
+    return 'weapon' in ninja
 })
 assert(someNinjasAreArmed, 'Some ninjas are armed');
 ```

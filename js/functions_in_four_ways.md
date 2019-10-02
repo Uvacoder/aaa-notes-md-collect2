@@ -7,18 +7,17 @@
 
 The Syntex definition as per ECMA ( https://www.ecma-international.org/ecma-262/5.1/ )
 
-![](https://i.imgur.com/mSV8caB.png)
+![ecmma script FE and FD](https://i.imgur.com/mSV8caB.png)
 
 ## differnce between function expression and declaration
 
-![](https://i.imgur.com/G0rgY67.png)
+![ecma scrip definition for function expression and declaration](https://i.imgur.com/G0rgY67.png)
 
-```javascript=
+```js
 function add(){} // function declaration
 var add = function(){} // the right side of the assignment is function expression
 function add(function(){ // the argument of add the return value of the argument both are function expression
-	return function(){}
-	```javascript=
+    return function(){}
 }())
 (function add(){})() //function expression
 ```
@@ -27,7 +26,7 @@ function add(function(){ // the argument of add the return value of the argument
 
 Example 1
 
-```javascript=
+```js
 (function(a){return a +2 })(3) // 5
 (function(a){return a +2 }(3)) // 5
 ```
@@ -37,11 +36,11 @@ In the above example we use the argument outside paranthesis in 1st example insi
 The reason why we use a paranthesis around the function expression is the javascript parser need to differentiate between function expression and function declaration
 If we put a function expression and without any paranthesis the javascript parser will consider it as a function declaration and throw error
 
-![](https://i.imgur.com/5xgzJiM.png)
+![IIFE console](https://i.imgur.com/5xgzJiM.png)
 
 Example 2 (IIFE)
 
-```javascript=
+```js
 +function(){}();
 -function(){}();
 !function(){}();

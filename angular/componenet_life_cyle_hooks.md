@@ -6,6 +6,7 @@
 - A directive has the same set of lifecycle hooks.
 
 ## Lifecycle interface
+
 - Developers can tap into key moments in that lifecycle by implementing one or more of the lifecycle hook interfaces in the Angular core library.
 - Each interface has a single hook method whose name is the interface name prefixed with ng. For example, the OnInit interface has a hook method named ngOnInit() that Angular calls shortly after creating the component
 - Angular only calls a directive/component hook method if it is defined.
@@ -28,6 +29,8 @@ export class PeekABoo implements OnInit {
 [Refer here](https://angular.io/guide/lifecycle-hooks#lifecycle-sequence)
 
 ![angular-life-cyle-events](2019-09-19-10-32-45.png)
+
+### What is the use of ngDoCheck vs ngOnChange
 
 ## Is interfaces required for life-cycle events
 
