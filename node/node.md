@@ -1,8 +1,8 @@
 # node
 
 ## Architecture
-![node architechture image](./images/nodejs_architech.jpg)
 
+![node architechture image](./images/nodejs_architech.jpg)
 
 ## Single threaded and Event Driven
 
@@ -254,12 +254,19 @@ Today’s operating systems already provide `asynchronous interfaces for many I/
 Whenever possible, `libuv` will use those asynchronous interfaces, avoiding usage of the thread pool. The same applies to third party subsystems like databases. Here the authors of the driver will rather use the asynchronous interface than utilizing a thread pool.
 In short: *Only if there is no other way, the thread pool will be used for asynchronous I/O.*
 
+## When to use nodeJS
+
+- real time applications ( chat server, sharemarket, document collabration tools )
+- high I/O requests
+- video streaming and video on demand websites
+- To make the waiting time less for the users
+
+## When not to use nodeJS
+
+- CPU-heavy jobs like ( image processing, Heavy math applications )
+
 https://blog.risingstack.com/node-js-at-scale-understanding-node-js-event-loop/
 
 https://medium.com/the-node-js-collection/what-you-should-know-to-really-understand-the-node-js-event-loop-and-its-metrics-c4907b19da4c
 
 https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
-
-https://www.youtube.com/watch?v=PNa9OMajw9w
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#Run-to-completion

@@ -2,11 +2,11 @@
 
 ## node
 
-[How nodeJS works ?]()  
+[How nodeJS works ?](./node.md#architecture)  
 [What is meant by event-driven language ?](./node.md#single-threaded-and-event-driven)  
 [What is single threaded language ?](./node.md#single-threaded-and-event-driven)  
-[What is the roll of v8 engine in node ?]()  
-[What is the roll of libuv in node ?]()  
+[What is the roll of v8 engine in node ?](./node.md#v8-engine)  
+[What is the roll of libuv in node ?](./node.md#libuv)  
 [What are the phases of eventloop ?](./node.md#eventloop-order-of-operations)  
 [What is eventloop and why it is called as eventloop ?](./node.md#eventloop-naming-convention)  
 [On what basis each phase of eventloop executes ?](./node.md#eventloop-order-of-operations)  
@@ -25,6 +25,8 @@
 [How many macro tasks can be picked from macrotask queue in 1 cycle ?](./node.md#example-code-and-explanation)  
 [How many micro tasks can be picked from macrotask queue in 1 cycle ?](./node.md#example-code-and-explanation)  
 [If a macro task registers a new micro task during execution will that be picked in the same cycle ?](./node.md#example-code-and-explanation)  
-[If a micro task registers a new microtask will that be picked up during same cycle ?](.//node.md#example-code-and-explanation)  
+[If a micro task registers a new microtask will that be picked up during same cycle ?](./node.md#example-code-and-explanation)  
 [Find out the output for the following code ?](./node.md#example-code-and-explanation)  
 [How and where the asyncronous tasks gets executed ?](./node.md#how-and-where-async-tasks-gets-executed)  
+[When to use nodeJS ?](./node.md#when-to-use-nodejs)
+[When not to use nodeJS ?](./node.md#when-not-to-use-nodejs)
