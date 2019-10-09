@@ -229,6 +229,7 @@ alert(clone.sizes.width); // 51, see the result from the other one
 To fix that we should use a cloning loop which check any of the cloning property is also a Object, If yes then it replicates that structure as well which is called `deep cloning`
 
 ### Object.seal
+
 :sparkle: method seals an object, preventing new properties from being added to it 
 
 :sparkle: marking all existing properties as non-configurable.
@@ -276,3 +277,41 @@ Object.values(person)
  */
 ```
 
+### Object.entries
+
+```js
+const object1 = {
+  a: 'somestring',
+  b: 42
+};
+
+console.log(Object.entries(object1))
+```
+
+### Object.fromEntries
+
+It is just the reverse of `Object.entries`
+
+The `Object.fromEntries()` method transforms a list of key-value pairs into an object.
+
+#### Example 1
+
+```js
+const entries = new Map([
+  ['foo', 'bar'],
+  ['baz', 42]
+]);
+
+const obj = Object.fromEntries(entries);
+
+console.log(obj);
+// expected output: Object { foo: "bar", baz: 42 }
+```
+
+#### Example 2
+
+```js
+const arr = [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ];
+const obj = Object.fromEntries(arr);
+console.log(obj); // { 0: "a", 1: "b", 2: "c" }
+```

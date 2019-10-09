@@ -65,3 +65,20 @@
 [What is safe navigation operator ?](./template_syntax.md#safe-navigation-operator---)  
 [what is non-null operator ?](./template_syntax.md#the-non-null-assertion-operator---)  
 [What is build type cast function ?](./template_syntax.md#build-in-template-functions)  
+
+## Angular lifehooks
+
+[What are lifecycle hooks ?]()  
+[What is lifecycle interface ?]()  
+[Is it mandatory to use interfaces when using lifecycle hooks?]()  
+[What is the purpose of using lifecycle interfaces ?]()  
+[What is the first lifecycle hook which will get invoked ?]()  
+[What is the purpose of ngOnChanges and when it will be invoked ?]()  
+[What is the purpose of ngOnInit and when it will be invoked ?]()  
+[What is the purpose of ngDoCheck and when it will be invoked ?]()  
+[What is the purpose of ngAfterContentInit and when it will be invoked ?]()  
+[What is the purpose of ngAfterContentChecked and when it will be invoked ?]()  
+[What is the purpose of ngAfterViewInit and when it will be invoked ?]()  
+[What is the purpose of ngAfterViewChecked and when it will be invoked ?]()  
+[What is the purpose of ngOnDestroy and when it will be invoked ?]()  
+

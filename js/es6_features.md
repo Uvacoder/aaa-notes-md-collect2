@@ -539,6 +539,17 @@ for(var item of ninjaHomeLandMap){
 }
 ```
 
+### Other ways of using Map
+
+```js
+const entries = new Map([
+  ['foo', 'bar'],
+  ['baz', 42]
+]);
+```
+
+![other ways of using map ](./images/2019-10-09-10-00-30.png)
+
 ## Set
 
 ![Set example](https://i.imgur.com/bNKsJzb.png)
