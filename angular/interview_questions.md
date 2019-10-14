@@ -13,6 +13,27 @@
 [What are the things components comprised of ?](./component.md/#component-is-comprised-of-three-things)  
 [How a component recognizes a services ?](./dependency_injection.md#constructor-parameter-of-component)  
 
+## Component Interaction
+
+[What is the use of input and output decorators in component interaction ?](https://angular.io/guide/component-interaction)
+[How to pass data from parent to child through input binding ?](https://angular.io/guide/component-interaction#pass-data-from-parent-to-child-with-input-binding)  
+[How to intercept the input property with a getter and setter during component interactin ?](https://angular.io/guide/component-interaction#intercept-input-property-changes-with-a-setter)  
+[How to intercept the input property with ngOnChanges during component interactin ?](https://angular.io/guide/component-interaction#intercept-input-property-changes-with-ngonchanges)  
+[How parent can able to listen events triggered from child ?](https://angular.io/guide/component-interaction#parent-listens-for-child-event)  
+[What is the role of eventemitter in component interaction ?](https://angular.io/guide/component-interaction#parent-listens-for-child-event)  
+[How Parent component interacting with child component via local variable ( template reference variable ) ?](https://angular.io/guide/component-interaction#parent-interacts-with-child-via-local-variable)  
+[How to access child component inside parent component class via local variable ?]([How Parent component interacting with child component via local variable ?](https://angular.io/guide/component-interaction#parent-interacts-with-child-via-local-variable)  
+[How to communicate parent and child via services ?](https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service)  
+
+## Component styles
+
+[How styles are being added to component ?]()  
+[Does the scope of the component styles applied from parent component styles ?]()  
+[How to apply style to component host ?]()
+[How to apply style to componnet based on component ancesters styles ?]()
+[What are the different ways of loading component styles ?]()
+[What are the different ways of component view encaptulaztion ?]()
+
 ## Dependency injection
 
 [What is dependency injection ?](./dependency_injection.md/#dependency_injection)  
@@ -68,17 +89,18 @@
 
 ## Angular lifehooks
 
-[What are lifecycle hooks ?]()  
-[What is lifecycle interface ?]()  
-[Is it mandatory to use interfaces when using lifecycle hooks?]()  
-[What is the purpose of using lifecycle interfaces ?]()  
-[What is the first lifecycle hook which will get invoked ?]()  
-[What is the purpose of ngOnChanges and when it will be invoked ?]()  
-[What is the purpose of ngOnInit and when it will be invoked ?]()  
-[What is the purpose of ngDoCheck and when it will be invoked ?]()  
-[What is the purpose of ngAfterContentInit and when it will be invoked ?]()  
-[What is the purpose of ngAfterContentChecked and when it will be invoked ?]()  
-[What is the purpose of ngAfterViewInit and when it will be invoked ?]()  
-[What is the purpose of ngAfterViewChecked and when it will be invoked ?]()  
-[What is the purpose of ngOnDestroy and when it will be invoked ?]()  
+[What are lifecycle hooks ?](./componenet_life_cyle_hooks.md#component-lifecycle-hooks)  
+[What is lifecycle interface ?](./componenet_life_cyle_hooks.md#lifecycle-interface)  
+[Is it mandatory to use interfaces when using lifecycle hooks?](./componenet_life_cyle_hooks.md#is-interfaces-required-for-life-cycle-events)  
+[What is the purpose of using lifecycle interfaces ?](./componenet_life_cyle_hooks.md#is-interfaces-required-for-life-cycle-events)  
+[What is the first lifecycle hook which will get invoked ?](./componenet_life_cyle_hooks.md#ngonchanges)  
+[What is the purpose of ngOnChanges and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngonchanges)  
+[What is the purpose of ngOnInit and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngoninit)  
+[Why we need to use constructor as well as ngInit ?](./componenet_life_cyle_hooks.md#constructor-vs-ngoninit)
+[What is the purpose of ngDoCheck and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngdocheck)  
+[What is the purpose of ngAfterContentInit and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngaftercontentinit)  
+[What is the purpose of ngAfterContentChecked and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngaftercontentchecked)  
+[What is the purpose of ngAfterViewInit and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngafterviewinit)  
+[What is the purpose of ngAfterViewChecked and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngafterviewchecked)  
+[What is the purpose of ngOnDestroy and when it will be invoked ?](./componenet_life_cyle_hooks.md#ngondestroy)  
 
