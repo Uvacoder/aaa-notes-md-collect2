@@ -27,12 +27,12 @@
 
 ## Component styles
 
-[How styles are being added to component ?]()  
-[Does the scope of the component styles applied from parent component styles ?]()  
-[How to apply style to component host ?]()
-[How to apply style to componnet based on component ancesters styles ?]()
-[What are the different ways of loading component styles ?]()
-[What are the different ways of component view encaptulaztion ?]()
+[Does the scope of the component styles applied from parent component styles ?](https://angular.io/guide/component-styles#style-scope)  
+[What are the special selectors angular provides in css ?](https://angular.io/guide/component-styles#style-scope)  
+[How to apply style to component host ?](https://angular.io/guide/component-styles#host)  
+[How to apply style to componnet based on component ancesters styles ?](https://angular.io/guide/component-styles#host-context)
+[What are the different ways of loading component styles ?](https://angular.io/guide/component-styles#loading-component-styles)
+[What are the different ways of component view encaptulaztion ?](https://angular.io/guide/component-styles#view-encapsulation)  
 
 ## Dependency injection
 

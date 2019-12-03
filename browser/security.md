@@ -1,0 +1,3 @@
+# Security
+
+## Same origin policy
