@@ -32,24 +32,24 @@ There is only one thread that executes NodeJS code and this is the thread where 
 ### Eventloop order of operations
 
 ```js
-┌───────────────────────────┐
-┌─>│           timers          │
-│  └─────────────┬─────────────┘
-│  ┌─────────────┴─────────────┐
-│  │     pending callbacks     │
-│  └─────────────┬─────────────┘
-│  ┌─────────────┴─────────────┐
-│  │       idle, prepare       │
-│  └─────────────┬─────────────┘      ┌───────────────┐
-│  ┌─────────────┴─────────────┐      │   incoming:   │
-│  │           poll            │<─────┤  connections, │
-│  └─────────────┬─────────────┘      │   data, etc.  │
-│  ┌─────────────┴─────────────┐      └───────────────┘
-│  │           check           │
-│  └─────────────┬─────────────┘
-│  ┌─────────────┴─────────────┐
-└──┤      close callbacks      │
-   └───────────────────────────┘
+     ┌───────────────────────────┐
+        ┌─>│           poll            │ 
+        │  └─────────────┬─────────────┘
+        │  ┌─────────────┴─────────────┐
+        │  │           check           │
+        │  └─────────────┬─────────────┘
+        │  ┌─────────────┴─────────────┐
+        │  │       close callbacks     │
+        │  └─────────────┬─────────────┘
+        │  ┌─────────────┴─────────────┐
+        │  │           timers          │
+        │  └─────────────┬─────────────┘
+        │  ┌─────────────┴─────────────┐
+        │  │     pending callbacks     │
+        │  └─────────────┬─────────────┘
+        │  ┌─────────────┴─────────────┐
+        └──┤        idle, prepare      │
+           └───────────────────────────┘
 ```
 
 - Each phase has a FIFO queue of callbacks to execute.
@@ -77,10 +77,13 @@ It's is loopa where which will looping for the event Callbacks to be called exec
 
 #### poll phase
 
+All of the syncronouses javascript operations will be executed here
+
 It has two main functionalities
 
 1. Calculating how long it should block and poll for I/O, then
 2. Processing events in the poll queue.
+
 
 When the event loop enters the poll phase and
 
