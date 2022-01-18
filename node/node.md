@@ -32,8 +32,8 @@ There is only one thread that executes NodeJS code and this is the thread where 
 ### Eventloop order of operations
 
 ```js
-     ┌───────────────────────────┐
-        ┌─>│           poll            │ 
+           ┌───────────────────────────┐
+        ┌─>│           poll            │ ---> prints 1
         │  └─────────────┬─────────────┘
         │  ┌─────────────┴─────────────┐
         │  │           check           │
@@ -42,14 +42,14 @@ There is only one thread that executes NodeJS code and this is the thread where 
         │  │       close callbacks     │
         │  └─────────────┬─────────────┘
         │  ┌─────────────┴─────────────┐
-        │  │           timers          │
+        │  │           timers          │ ---> prints 2
         │  └─────────────┬─────────────┘
         │  ┌─────────────┴─────────────┐
         │  │     pending callbacks     │
         │  └─────────────┬─────────────┘
         │  ┌─────────────┴─────────────┐
         └──┤        idle, prepare      │
-           └───────────────────────────┘
+           └───────────────────────────┘ 
 ```
 
 - Each phase has a FIFO queue of callbacks to execute.
